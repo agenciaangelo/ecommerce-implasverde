@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Implasverde — Sacolas Plásticas do Nordeste</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-deep: #1a4a2e;
+    --green-mid: #2d7a4f;
+    --green-bright: #3ea660;
+    --green-light: #a8d5b5;
+    --green-pale: #e8f5ed;
+    --white: #ffffff;
+    --off-white: #f7faf8;
+    --gray-100: #f0f2f0;
+    --gray-300: #c8cec9;
+    --gray-500: #7a8a7d;
+    --gray-700: #3d4a3f;
+    --text-dark: #1a2e1f;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--off-white);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--green-deep);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 38px; height: 38px;
+    background: var(--green-bright);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 20px; color: white; letter-spacing: 1px;
+  }
+
+  .nav-logo-text {
+    font-family: var(--font-display);
+    font-size: 22px; letter-spacing: 2px;
+    color: white;
+    line-height: 1;
+  }
+
+  .nav-logo-sub {
+    font-size: 9px; font-weight: 300;
+    color: var(--green-light);
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex; gap: 28px; list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--green-light);
+    text-decoration: none;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.5px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: white; }
+
+  .nav-cta {
+    background: var(--green-bright);
+    color: white !important;
+    padding: 9px 20px;
+    border-radius: 6px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--green-mid) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--green-deep);
+    min-height: 88vh;
+    display: flex; align-items: center;
+    padding: 80px 5%;
+    position: relative; overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232d7a4f' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .hero-content {
+    position: relative; z-index: 1;
+    max-width: 560px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(62,166,96,0.2);
+    border: 1px solid rgba(62,166,96,0.4);
+    color: var(--green-light);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 8vw, 88px);
+    color: white; letter-spacing: 2px;
+    line-height: 0.95; margin-bottom: 20px;
+  }
+
+  .hero h1 span { color: var(--green-bright); }
+
+  .hero p {
+    color: var(--green-light); font-size: 17px;
+    font-weight: 300; line-height: 1.7;
+    max-width: 440px; margin-bottom: 36px;
+  }
+
+  .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--green-bright);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 8px; border: none;
+    font-family: var(--font-body); font-size: 14px; font-weight: 600;
+    letter-spacing: 0.5px; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .btn-primary:hover { background: var(--green-mid); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.3);
+    font-family: var(--font-body); font-size: 14px; font-weight: 500;
+    cursor: pointer; text-decoration: none; display: inline-block;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: white;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .hero-visual {
+    position: absolute; right: 5%; top: 50%;
+    transform: translateY(-50%);
+    width: 420px; height: 420px;
+    opacity: 0.12;
+  }
+
+  .hero-stats {
+    position: relative; z-index: 1;
+    margin-top: 48px;
+    display: flex; gap: 40px;
+  }
+
+  .stat { color: white; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 36px; color: var(--green-bright);
+    letter-spacing: 1px; line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px; color: var(--green-light);
+    text-transform: uppercase; letter-spacing: 1px;
+    font-weight: 500; margin-top: 4px;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section { padding: 80px 5%; }
+  .section-alt { background: var(--white); }
+
+  .section-header { text-align: center; margin-bottom: 52px; }
+
+  .section-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--green-bright); margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 5vw, 54px);
+    color: var(--green-deep); letter-spacing: 1.5px;
+    line-height: 1;
+  }
+
+  .section-subtitle {
+    font-size: 16px; color: var(--gray-500);
+    margin-top: 12px; max-width: 500px; margin-inline: auto;
+  }
+
+  /* ── PRODUCTS ── */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--gray-100);
+    transition: box-shadow 0.25s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .product-card:hover {
+    box-shadow: 0 8px 32px rgba(26,74,46,0.12);
+    transform: translateY(-3px);
+  }
+
+  .product-img {
+    height: 180px;
+    background: var(--green-pale);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+
+  .product-img svg { width: 90px; height: 120px; }
+
+  .product-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: var(--green-bright); color: white;
+    font-size: 10px; font-weight: 700;
+    padding: 3px 8px; border-radius: 100px;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+
+  .product-info { padding: 16px 18px 20px; }
+
+  .product-name {
+    font-size: 15px; font-weight: 600;
+    color: var(--green-deep); margin-bottom: 5px;
+  }
+
+  .product-desc {
+    font-size: 12px; color: var(--gray-500);
+    line-height: 1.5; margin-bottom: 14px;
+  }
+
+  .product-sizes {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .size-tag {
+    font-size: 10px; font-weight: 600;
+    background: var(--green-pale);
+    color: var(--green-deep);
+    padding: 3px 8px; border-radius: 4px;
+    border: 1px solid var(--green-light);
+  }
+
+  .product-cta {
+    width: 100%; padding: 10px;
+    background: var(--green-deep); color: white;
+    border: none; border-radius: 7px;
+    font-family: var(--font-body); font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .product-cta:hover { background: var(--green-bright); }
+
+  /* ── PERSONALIZATION STUDIO ── */
+  .studio-section {
+    background: var(--green-deep);
+    padding: 80px 5%;
+    position: relative; overflow: hidden;
+  }
+
+  .studio-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232d7a4f' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .studio-section .section-title { color: white; }
+  .studio-section .section-subtitle { color: var(--green-light); }
+
+  .studio-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px; align-items: start;
+    position: relative; z-index: 1;
+  }
+
+  .studio-panel {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+
+  .studio-panel h3 {
+    font-family: var(--font-display);
+    font-size: 22px; letter-spacing: 1.5px;
+    color: white; margin-bottom: 20px;
+  }
+
+  .upload-zone {
+    border: 2px dashed rgba(62,166,96,0.5);
+    border-radius: 10px;
+    padding: 36px 20px;
+    text-align: center;
+    cursor: pointer; transition: all 0.2s;
+    background: rgba(62,166,96,0.05);
+    position: relative;
+  }
+
+  .upload-zone:hover {
+    border-color: var(--green-bright);
+    background: rgba(62,166,96,0.1);
+  }
+
+  .upload-zone input[type="file"] {
+    position: absolute; inset: 0;
+    opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+
+  .upload-icon {
+    font-size: 40px; margin-bottom: 12px;
+    display: block;
+  }
+
+  .upload-title {
+    font-size: 15px; font-weight: 600;
+    color: white; margin-bottom: 6px;
+  }
+
+  .upload-hint {
+    font-size: 12px; color: var(--green-light);
+    line-height: 1.5;
+  }
+
+  .diretrizes {
+    background: rgba(62,166,96,0.08);
+    border: 1px solid rgba(62,166,96,0.2);
+    border-radius: 9px; padding: 18px;
+    margin-top: 18px;
+  }
+
+  .diretrizes h4 {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--green-bright); margin-bottom: 12px;
+  }
+
+  .diretriz-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .diretriz-check {
+    width: 18px; height: 18px; flex-shrink: 0;
+    background: var(--green-bright); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: white; font-weight: 700; margin-top: 1px;
+  }
+
+  .diretriz-text { font-size: 12px; color: var(--green-light); line-height: 1.5; }
+  .diretriz-text strong { color: white; }
+
+  /* PREVIEW */
+  .preview-container {
+    display: flex; flex-direction: column; align-items: center; gap: 20px;
+  }
+
+  .preview-bag-wrapper {
+    position: relative; width: 280px; height: 340px;
+  }
+
+  .preview-bag-svg {
+    width: 100%; height: 100%;
+  }
+
+  .preview-logo-overlay {
+    position: absolute;
+    top: 42%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px; height: 80px;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none;
+  }
+
+  .preview-logo-overlay img {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    opacity: 0.85;
+  }
+
+  .preview-logo-placeholder {
+    width: 110px; height: 55px;
+    border: 2px dashed rgba(255,255,255,0.3);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .preview-logo-placeholder span {
+    font-size: 10px; color: rgba(255,255,255,0.4);
+    text-align: center; font-style: italic;
+  }
+
+  .preview-controls {
+    width: 100%; display: flex; gap: 10px; flex-direction: column;
+  }
+
+  .control-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .control-label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--green-light);
+  }
+
+  .color-swatches { display: flex; gap: 8px; }
+
+  .color-swatch {
+    width: 28px; height: 28px; border-radius: 50%;
+    cursor: pointer; border: 2px solid transparent;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+
+  .color-swatch:hover, .color-swatch.active {
+    border-color: white; transform: scale(1.15);
+  }
+
+  .size-selector { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .size-btn {
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px; color: var(--green-light);
+    font-size: 12px; font-weight: 500; cursor: pointer;
+    transition: all 0.15s; font-family: var(--font-body);
+  }
+
+  .size-btn:hover, .size-btn.active {
+    background: var(--green-bright);
+    border-color: var(--green-bright); color: white;
+  }
+
+  /* ── ORDER PANEL ── */
+  .order-panel {
+    background: white;
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  .order-panel h3 {
+    font-family: var(--font-display);
+    font-size: 24px; letter-spacing: 1.5px;
+    color: var(--green-deep); margin-bottom: 22px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+
+  .form-group label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--gray-500);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 11px 14px;
+    border: 1.5px solid var(--gray-300);
+    border-radius: 8px; font-family: var(--font-body);
+    font-size: 14px; color: var(--text-dark);
+    background: white; transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--green-bright);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 80px; }
+
+  .whatsapp-btn {
+    width: 100%; padding: 16px;
+    background: #25d366; color: white; border: none;
+    border-radius: 10px; font-family: var(--font-body);
+    font-size: 16px; font-weight: 700; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 6px;
+  }
+
+  .whatsapp-btn:hover { background: #1fb855; transform: translateY(-1px); }
+
+  .whatsapp-btn svg { width: 22px; height: 22px; }
+
+  /* ── HOW IT WORKS ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    content: '';
+    position: absolute; top: 32px; left: 10%; right: 10%;
+    height: 1px; background: var(--green-light);
+    z-index: 0;
+  }
+
+  .step-card {
+    text-align: center; position: relative; z-index: 1;
+  }
+
+  .step-num {
+    width: 64px; height: 64px;
+    background: var(--green-deep); color: white;
+    border-radius: 50%; display: flex;
+    align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 28px;
+    letter-spacing: 1px; margin: 0 auto 16px;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--green-mid);
+  }
+
+  .step-title {
+    font-size: 14px; font-weight: 600;
+    color: var(--green-deep); margin-bottom: 8px;
+  }
+
+  .step-text { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+
+  /* ── TESTIMONIALS / DIFFERENTIALS ── */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .diff-card {
+    background: white;
+    border: 1px solid var(--gray-100);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: box-shadow 0.2s;
+  }
+
+  .diff-card:hover { box-shadow: 0 6px 20px rgba(26,74,46,0.08); }
+
+  .diff-icon {
+    width: 48px; height: 48px;
+    background: var(--green-pale);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 16px;
+  }
+
+  .diff-title {
+    font-size: 15px; font-weight: 600;
+    color: var(--green-deep); margin-bottom: 8px;
+  }
+
+  .diff-text { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green-deep);
+    padding: 52px 5% 28px;
+    color: var(--green-light);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px; margin-bottom: 40px;
+  }
+
+  .footer-brand-name {
+    font-family: var(--font-display);
+    font-size: 26px; color: white;
+    letter-spacing: 2px; margin-bottom: 10px;
+  }
+
+  .footer-brand-desc {
+    font-size: 13px; line-height: 1.7; max-width: 260px;
+    margin-bottom: 20px;
+  }
+
+  .footer-col-title {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: white; margin-bottom: 14px;
+  }
+
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 8px; }
+  .footer-links a {
+    color: var(--green-light); text-decoration: none;
+    font-size: 13px; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: white; }
+
+  .footer-divider { border-color: rgba(255,255,255,0.1); margin-bottom: 20px; }
+
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; color: var(--gray-500);
+  }
+
+  .footer-bottom a { color: var(--green-light); text-decoration: none; }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 500;
+    background: rgba(0,0,0,0.6);
+    align-items: center; justify-content: center; padding: 20px;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: white; border-radius: var(--radius);
+    padding: 36px; max-width: 480px; width: 100%;
+    position: relative; max-height: 90vh; overflow-y: auto;
+  }
+
+  .modal-close {
+    position: absolute; top: 16px; right: 16px;
+    background: none; border: none; font-size: 22px;
+    cursor: pointer; color: var(--gray-500); line-height: 1;
+  }
+
+  .modal-title {
+    font-family: var(--font-display);
+    font-size: 26px; letter-spacing: 1.5px;
+    color: var(--green-deep); margin-bottom: 20px;
+  }
+
+  /* ── CART FLOAT ── */
+  .cart-float {
+    position: fixed; bottom: 30px; right: 30px; z-index: 200;
+    background: var(--green-deep); color: white;
+    width: 58px; height: 58px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    transition: transform 0.2s;
+    font-size: 24px; text-decoration: none;
+    border: none;
+  }
+
+  .cart-float:hover { transform: scale(1.08); }
+
+  .cart-badge {
+    position: absolute; top: -4px; right: -4px;
+    background: #25d366; color: white;
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid white;
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 100px; right: 30px; z-index: 300;
+    background: var(--green-deep); color: white;
+    padding: 12px 20px; border-radius: 8px;
+    font-size: 13px; font-weight: 500;
+    opacity: 0; transform: translateY(10px);
+    transition: all 0.3s; pointer-events: none;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  }
+
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .studio-layout { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-grid::before { display: none; }
+    .diff-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .hero { min-height: auto; padding: 60px 5%; }
+    .hero-visual { display: none; }
+    .diff-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">IV</div>
+    <div>
+      <div class="nav-logo-text">IMPLASVERDE</div>
+      <div class="nav-logo-sub">Indústria de Plásticos</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#produtos">Produtos</a></li>
+    <li><a href="#personalize">Personalização</a></li>
+    <li><a href="#como-funciona">Como Funciona</a></li>
+    <li><a href="#pedido" class="nav-cta">Fazer Pedido</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🌿 Pioneira no Nordeste desde 1993</div>
+    <h1>A SACOLA DO<br><span>NORDESTE</span><br>VEM DAQUI.</h1>
+    <p>Sacolas e embalagens plásticas de alta qualidade. Personalize com a sua marca e veja como fica antes de fazer o pedido.</p>
+    <div class="hero-buttons">
+      <a href="#personalize" class="btn-primary">Personalizar Agora</a>
+      <a href="#produtos" class="btn-outline">Ver Produtos</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Anos de mercado</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Resíduos recuperados</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">NE</div>
+        <div class="stat-label">Cobertura no Nordeste</div>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-visual" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="150" cy="150" rx="140" ry="140" stroke="#3ea660" stroke-width="1" stroke-dasharray="8 4"/>
+    <ellipse cx="150" cy="150" rx="100" ry="100" stroke="#3ea660" stroke-width="1" stroke-dasharray="4 8"/>
+    <ellipse cx="150" cy="150" rx="60" ry="60" fill="#3ea660" opacity="0.3"/>
+    <path d="M100 80 Q150 60 200 80 L210 220 Q150 240 90 220 Z" fill="#3ea660" opacity="0.3"/>
+    <path d="M120 80 Q150 55 120 80 L110 50" stroke="#3ea660" stroke-width="3" stroke-linecap="round"/>
+    <path d="M180 80 Q150 55 180 80 L190 50" stroke="#3ea660" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section section-alt" id="como-funciona">
+  <div class="section-header">
+    <div class="section-label">Simples e Rápido</div>
+    <div class="section-title">COMO FUNCIONA</div>
+    <p class="section-subtitle">Do pedido personalizado até a entrega em poucos passos</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-title">Escolha o produto</div>
+      <p class="step-text">Selecione o tipo de sacola, tamanho e quantidade que precisa.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-title">Envie sua logo</div>
+      <p class="step-text">Faça upload da sua logomarca em PNG ou AI com fundo transparente.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-title">Veja o preview</div>
+      <p class="step-text">Visualize como ficará a sacola personalizada com a sua marca antes de pedir.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-title">Peça pelo WhatsApp</div>
+      <p class="step-text">Envie o pedido direto para nossa equipe comercial pelo WhatsApp.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section class="section" id="produtos">
+  <div class="section-header">
+    <div class="section-label">Catálogo</div>
+    <div class="section-title">NOSSOS PRODUTOS</div>
+    <p class="section-subtitle">Linha completa de embalagens plásticas para seu negócio</p>
+  </div>
+  <div class="products-grid" id="productsGrid">
+    <!-- Cards gerados por JS -->
+  </div>
+</section>
+
+<!-- STUDIO DE PERSONALIZAÇÃO -->
+<section class="studio-section" id="personalize">
+  <div style="position:relative;z-index:1">
+    <div class="section-header">
+      <div class="section-label" style="color:var(--green-bright)">Ferramenta Exclusiva</div>
+      <div class="section-title" style="color:white">PERSONALIZE SUA SACOLA</div>
+      <p class="section-subtitle">Envie sua logomarca e veja o resultado antes de fazer o pedido</p>
+    </div>
+    <div class="studio-layout">
+      <!-- PAINEL ESQUERDO: UPLOAD + DIRETRIZES -->
+      <div>
+        <div class="studio-panel">
+          <h3>UPLOAD DA LOGOMARCA</h3>
+          <div class="upload-zone" id="uploadZone">
+            <input type="file" id="logoInput" accept="image/png,image/jpeg,image/svg+xml,image/gif">
+            <span class="upload-icon">☁️</span>
+            <div class="upload-title">Arraste sua logo ou clique aqui</div>
+            <div class="upload-hint">PNG com fundo transparente (ideal) · JPG · SVG<br>Tamanho máximo: 5MB</div>
+          </div>
+
+          <div class="diretrizes">
+            <h4>📋 Diretrizes para o arquivo de arte</h4>
+            <div class="diretriz-item">
+              <div class="diretriz-check">✓</div>
+              <div class="diretriz-text"><strong>Formato ideal:</strong> PNG com fundo transparente ou AI (Illustrator) em vetor</div>
+            </div>
+            <div class="diretriz-item">
+              <div class="diretriz-check">✓</div>
+              <div class="diretriz-text"><strong>Resolução:</strong> mínimo 300 DPI para impressão de qualidade</div>
+            </div>
+            <div class="diretriz-item">
+              <div class="diretriz-check">✓</div>
+              <div class="diretriz-text"><strong>Cores:</strong> modo CMYK para cores fiéis na impressão. Informe o Pantone se tiver</div>
+            </div>
+            <div class="diretriz-item">
+              <div class="diretriz-check">✓</div>
+              <div class="diretriz-text"><strong>Área de impressão:</strong> respeite a margem de 5mm nas bordas</div>
+            </div>
+            <div class="diretriz-item">
+              <div class="diretriz-check">✓</div>
+              <div class="diretriz-text"><strong>Tamanho do arquivo:</strong> máximo 10MB para arquivo final de produção</div>
+            </div>
+            <div class="diretriz-item">
+              <div class="diretriz-check">✓</div>
+              <div class="diretriz-text"><strong>Dica:</strong> logo em cores sólidas tem melhor resultado em sacolas plásticas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTROLES -->
+        <div class="studio-panel" style="margin-top:16px">
+          <h3>PERSONALIZAR</h3>
+
+          <div class="control-group" style="margin-bottom:18px">
+            <div class="control-label">Cor da Sacola</div>
+            <div class="color-swatches" id="colorSwatches">
+              <div class="color-swatch active" data-color="#f5f5f5" style="background:#f5f5f5;border:1px solid #ccc" title="Natural"></div>
+              <div class="color-swatch" data-color="#1a4a2e" style="background:#1a4a2e" title="Verde Escuro"></div>
+              <div class="color-swatch" data-color="#2d7a4f" style="background:#2d7a4f" title="Verde Médio"></div>
+              <div class="color-swatch" data-color="#3a86c8" style="background:#3a86c8" title="Azul"></div>
+              <div class="color-swatch" data-color="#e84040" style="background:#e84040" title="Vermelho"></div>
+              <div class="color-swatch" data-color="#f0a500" style="background:#f0a500" title="Amarelo"></div>
+              <div class="color-swatch" data-color="#222222" style="background:#222222" title="Preto"></div>
+            </div>
+          </div>
+
+          <div class="control-group" style="margin-bottom:18px">
+            <div class="control-label">Tipo de Produto</div>
+            <div class="size-selector" id="typeSelector">
+              <button class="size-btn active" data-type="sacola-varejo">Sacola Varejo</button>
+              <button class="size-btn" data-type="sacola-comercio">Sacola Comércio</button>
+              <button class="size-btn" data-type="saco-geral">Saco Geral</button>
+              <button class="size-btn" data-type="sacola-recuperada">Sacola Eco</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">Tamanho</div>
+            <div class="size-selector" id="sizeSelector">
+              <button class="size-btn active" data-size="P">P</button>
+              <button class="size-btn" data-size="M">M</button>
+              <button class="size-btn" data-size="G">G</button>
+              <button class="size-btn" data-size="GG">GG</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAINEL DIREITO: PREVIEW + PEDIDO -->
+      <div>
+        <div class="studio-panel">
+          <h3>PREVIEW DA SACOLA</h3>
+          <div class="preview-container">
+            <div class="preview-bag-wrapper">
+              <!-- SVG da sacola gerado por JS -->
+              <svg class="preview-bag-svg" id="bagSVG" viewBox="0 0 280 340" xmlns="http://www.w3.org/2000/svg">
+                <!-- Fundo/sombra -->
+                <ellipse cx="140" cy="330" rx="80" ry="8" fill="rgba(0,0,0,0.12)"/>
+                <!-- Corpo da sacola -->
+                <path id="bagBody" d="M40 90 Q38 80 45 75 L235 75 Q242 80 240 90 L255 310 Q256 324 240 325 L40 325 Q24 324 25 310 Z"
+                  fill="#f5f5f5" stroke="#cccccc" stroke-width="1.5"/>
+                <!-- Vinco central sutil -->
+                <line x1="140" y1="75" x2="140" y2="325" stroke="rgba(0,0,0,0.06)" stroke-width="1.5"/>
+                <!-- Dobra lateral esquerda -->
+                <path d="M40 90 L55 85 L55 320 L40 325" fill="rgba(0,0,0,0.04)"/>
+                <!-- Dobra lateral direita -->
+                <path d="M240 90 L225 85 L225 320 L240 325" fill="rgba(0,0,0,0.04)"/>
+                <!-- Alças esquerda -->
+                <path id="handleLeft" d="M95 75 Q90 20 110 15 Q130 10 125 75"
+                  fill="none" stroke="#bbbbbb" stroke-width="9" stroke-linecap="round"/>
+                <!-- Alças direita -->
+                <path id="handleRight" d="M155 75 Q150 20 170 15 Q190 10 185 75"
+                  fill="none" stroke="#bbbbbb" stroke-width="9" stroke-linecap="round"/>
+                <!-- Linha topo -->
+                <line x1="45" y1="75" x2="235" y2="75" stroke="#cccccc" stroke-width="1"/>
+                <!-- AREA LOGO: grupo centralizado -->
+                <g id="logoArea" transform="translate(80, 140)">
+                  <rect x="0" y="0" width="120" height="70" rx="4"
+                    fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1" stroke-dasharray="4 3"/>
+                  <text x="60" y="30" text-anchor="middle"
+                    font-family="DM Sans, sans-serif" font-size="10" fill="rgba(0,0,0,0.3)">
+                    Sua logo aqui
+                  </text>
+                  <text x="60" y="46" text-anchor="middle"
+                    font-family="DM Sans, sans-serif" font-size="9" fill="rgba(0,0,0,0.2)">
+                    Faça upload acima
+                  </text>
+                </g>
+                <!-- Logo como imagem incorporada (se houver) -->
+                <image id="logoBagImg" x="85" y="145" width="110" height="65"
+                  preserveAspectRatio="xMidYMid meet"
+                  style="display:none"/>
+              </svg>
+            </div>
+
+            <div style="text-align:center;margin-top:4px">
+              <span style="font-size:12px;color:var(--green-light)" id="previewLabel">Sacola Varejo · Tamanho P · Natural</span>
+            </div>
+
+            <button class="btn-primary" id="btnPersonalizeOrder" style="width:100%;margin-top:8px" onclick="scrollToPedido()">
+              Gostei! Quero fazer meu pedido →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM DE PEDIDO -->
+<section class="section section-alt" id="pedido">
+  <div class="section-header">
+    <div class="section-label">Comercial</div>
+    <div class="section-title">FAÇA SEU PEDIDO</div>
+    <p class="section-subtitle">Preencha os dados e envie direto para nossa equipe comercial pelo WhatsApp</p>
+  </div>
+
+  <div style="max-width:700px;margin:0 auto">
+    <div class="order-panel">
+      <h3>DADOS DO PEDIDO</h3>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nome / Empresa *</label>
+          <input type="text" id="f_nome" placeholder="Ex: Supermercado Silva">
+        </div>
+        <div class="form-group">
+          <label>WhatsApp *</label>
+          <input type="tel" id="f_tel" placeholder="(84) 99999-9999">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Cidade / Estado *</label>
+          <input type="text" id="f_cidade" placeholder="Ex: Natal – RN">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="f_email" placeholder="contato@empresa.com">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Produto Desejado *</label>
+          <select id="f_produto">
+            <option value="">Selecione o produto</option>
+            <option>Sacola Varejo</option>
+            <option>Sacola Comércio</option>
+            <option>Saco Geral</option>
+            <option>Sacola Recuperada (Eco)</option>
+            <option>Bobina Picotada – Fundo Estrela</option>
+            <option>Bobina Técnica</option>
+            <option>Saco Cesta Básica</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tamanho</label>
+          <select id="f_tamanho">
+            <option value="">Selecione</option>
+            <option>Pequeno (P)</option>
+            <option>Médio (M)</option>
+            <option>Grande (G)</option>
+            <option>Extra Grande (GG)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Quantidade Estimada</label>
+          <input type="text" id="f_qtd" placeholder="Ex: 5.000 unidades / mês">
+        </div>
+        <div class="form-group">
+          <label>Personalização com Logo?</label>
+          <select id="f_logo">
+            <option value="sim">Sim, quero personalizar</option>
+            <option value="nao">Não, sacola padrão</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Observações / Especificações</label>
+        <textarea id="f_obs" placeholder="Cores específicas, tipo de impressão, prazo desejado, etc."></textarea>
+      </div>
+
+      <button class="whatsapp-btn" onclick="enviarWhatsApp()">
+        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.11.547 4.094 1.502 5.822L.057 23.25l5.573-1.461A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.845 0-3.57-.497-5.055-1.364l-.363-.214-3.31.868.882-3.228-.237-.379A9.818 9.818 0 012.182 12C2.182 6.571 6.571 2.182 12 2.182S21.818 6.571 21.818 12 17.429 21.818 12 21.818z"/>
+        </svg>
+        Enviar Pedido pelo WhatsApp
+      </button>
+      <p style="text-align:center;font-size:11px;color:var(--gray-500);margin-top:10px">Nossa equipe responde em até 2 horas nos dias úteis</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-label">Por que a Implasverde</div>
+    <div class="section-title">NOSSOS DIFERENCIAIS</div>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-card">
+      <div class="diff-icon">🌱</div>
+      <div class="diff-title">Compromisso com o Meio Ambiente</div>
+      <p class="diff-text">100% dos resíduos pós-industriais são recuperados. Coleta seletiva e treinamento de todos os colaboradores.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon">🏭</div>
+      <div class="diff-title">Pioneira no Nordeste</div>
+      <p class="diff-text">Fundada em 1993 em João Câmara–RN, presente em todo o Norte e Nordeste do Brasil com qualidade reconhecida.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon">🎨</div>
+      <div class="diff-title">Personalização com Preview</div>
+      <p class="diff-text">Primeira sacola plástica do Nordeste com preview online. Veja sua marca na sacola antes de fechar o pedido.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon">✅</div>
+      <div class="diff-title">Segurança do Trabalho</div>
+      <p class="diff-text">Equipe especializada com técnicos, engenheiros e médico do trabalho. Conformidade total com as NRs do MTE.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon">📦</div>
+      <div class="diff-title">Linha Completa</div>
+      <p class="diff-text">Sacolas varejo, comércio, bobinas técnicas, picotadas e cesta básica. Tudo que seu negócio precisa em embalagens.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon">🤝</div>
+      <div class="diff-title">Atendimento Comercial Ágil</div>
+      <p class="diff-text">Pedido direto pelo WhatsApp com retorno em até 2 horas. Sem burocracia, direto com quem resolve.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">IMPLASVERDE</div>
+      <p class="footer-brand-desc">Pioneira no setor de indústria plástica no Rio Grande do Norte. Mais de 30 anos produzindo com qualidade, responsabilidade social e ambiental.</p>
+      <div style="display:flex;gap:10px">
+        <a href="https://wa.me/558499799094" target="_blank" style="background:rgba(255,255,255,0.1);color:var(--green-light);padding:8px 14px;border-radius:7px;font-size:12px;text-decoration:none;border:1px solid rgba(255,255,255,0.1)">📱 WhatsApp</a>
+        <a href="mailto:vendas@implasverde.ind.br" style="background:rgba(255,255,255,0.1);color:var(--green-light);padding:8px 14px;border-radius:7px;font-size:12px;text-decoration:none;border:1px solid rgba(255,255,255,0.1)">✉️ Email</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Produtos</div>
+      <ul class="footer-links">
+        <li><a href="#produtos">Sacola Varejo</a></li>
+        <li><a href="#produtos">Sacola Comércio</a></li>
+        <li><a href="#produtos">Saco Geral</a></li>
+        <li><a href="#produtos">Sacola Recuperada</a></li>
+        <li><a href="#produtos">Bobinas</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Empresa</div>
+      <ul class="footer-links">
+        <li><a href="#">Nossa História</a></li>
+        <li><a href="#">Missão e Valores</a></li>
+        <li><a href="#">Meio Ambiente</a></li>
+        <li><a href="#">Segurança do Trabalho</a></li>
+        <li><a href="#">Trabalhe Conosco</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contato</div>
+      <ul class="footer-links">
+        <li><a href="#">Av. Antônio Câmara, 200</a></li>
+        <li><a href="#">Centro – João Câmara/RN</a></li>
+        <li><a href="tel:+558499799094">(84) 9 9979-1094</a></li>
+        <li><a href="mailto:vendas@implasverde.ind.br">vendas@implasverde.ind.br</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <span>© 2025 Implasverde Indústria de Plásticos. Todos os direitos reservados.</span>
+    <span>Desenvolvido por <a href="#" style="color:var(--green-bright)">Agência Ângelo</a></span>
+  </div>
+</footer>
+
+<!-- BOTÃO FLUTUANTE WHATSAPP -->
+<a href="https://wa.me/558499799094?text=Olá! Vim pelo site e gostaria de fazer um pedido." target="_blank" class="cart-float" title="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" width="26" height="26">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.11.547 4.094 1.502 5.822L.057 23.25l5.573-1.461A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.845 0-3.57-.497-5.055-1.364l-.363-.214-3.31.868.882-3.228-.237-.379A9.818 9.818 0 012.182 12C2.182 6.571 6.571 2.182 12 2.182S21.818 6.571 21.818 12 17.429 21.818 12 21.818z"/>
+  </svg>
+</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  // ── DADOS DOS PRODUTOS ──
+  const produtos = [
+    { id: 1, nome: 'Sacola Varejo', desc: 'Para supermercados e lojas de varejo. Alta resistência e durabilidade.', tag: 'Mais vendida', sizes: ['P','M','G','GG'], tipo: 'sacola-varejo' },
+    { id: 2, nome: 'Sacola Comércio', desc: 'Ideal para lojas de roupas, calçados e comércio geral.', tag: null, sizes: ['M','G','GG'], tipo: 'sacola-comercio' },
+    { id: 3, nome: 'Saco Geral', desc: 'Uso versátil para embalagem de produtos alimentícios e industriais.', tag: null, sizes: ['P','M','G'], tipo: 'saco-geral' },
+    { id: 4, nome: 'Sacola Recuperada', desc: 'Linha eco com material reciclado. Sustentável e resistente.', tag: '♻️ Eco', sizes: ['M','G'], tipo: 'sacola-recuperada' },
+    { id: 5, nome: 'Bobina Picotada', desc: 'Fundo estrela. Para dispensers e rolos de sacolas contínuas.', tag: null, sizes: ['P','M'], tipo: 'bobina' },
+    { id: 6, nome: 'Bobina Técnica', desc: 'Para uso industrial, embalagem de produtos e proteção.', tag: null, sizes: ['M','G','GG'], tipo: 'bobina-tec' },
+    { id: 7, nome: 'Saco Cesta Básica', desc: 'Específico para montagem e distribuição de cestas básicas.', tag: null, sizes: ['G','GG'], tipo: 'cesta' },
+  ];
+
+  // Gera SVG da sacola em miniatura para cards
+  function bagMiniSVG(color, tipo) {
+    const stroke = color === '#f5f5f5' ? '#ccc' : color;
+    const handleColor = color === '#f5f5f5' ? '#bbb' : stroke;
+    return `<svg viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg" width="80" height="110">
+      <ellipse cx="50" cy="126" rx="28" ry="4" fill="rgba(0,0,0,0.1)"/>
+      <path d="M14 32 Q13 28 17 26 L83 26 Q87 28 86 32 L91 118 Q92 124 85 125 L15 125 Q8 124 9 118 Z" fill="${color}" stroke="${stroke}" stroke-width="1.5"/>
+      <line x1="50" y1="26" x2="50" y2="125" stroke="rgba(0,0,0,0.05)" stroke-width="1"/>
+      <path d="M33 26 Q31 7 38 5 Q46 3 44 26" fill="none" stroke="${handleColor}" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M56 26 Q54 7 61 5 Q69 3 67 26" fill="none" stroke="${handleColor}" stroke-width="3.5" stroke-linecap="round"/>
+    </svg>`;
+  }
+
+  function renderProducts() {
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = produtos.map(p => `
+      <div class="product-card" onclick="selecionarProduto(${p.id})">
+        <div class="product-img">
+          ${bagMiniSVG('#f5f5f5', p.tipo)}
+          ${p.tag ? `<div class="product-badge">${p.tag}</div>` : ''}
+        </div>
+        <div class="product-info">
+          <div class="product-name">${p.nome}</div>
+          <div class="product-desc">${p.desc}</div>
+          <div class="product-sizes">
+            ${p.sizes.map(s => `<span class="size-tag">${s}</span>`).join('')}
+          </div>
+          <button class="product-cta">Solicitar Orçamento</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function selecionarProduto(id) {
+    const p = produtos.find(x => x.id === id);
+    document.getElementById('f_produto').value = p.nome;
+    document.getElementById('personalize').scrollIntoView({ behavior: 'smooth' });
+    showToast('✅ ' + p.nome + ' selecionado! Personalize abaixo.');
+  }
+
+  // ── ESTADO DA PREVIEW ──
+  let state = {
+    color: '#f5f5f5',
+    tipo: 'Sacola Varejo',
+    size: 'P',
+    logoDataUrl: null
+  };
+
+  function updateBagColor(color) {
+    const body = document.getElementById('bagBody');
+    const stroke = color === '#f5f5f5' ? '#cccccc' : color;
+    const handleL = document.getElementById('handleLeft');
+    const handleR = document.getElementById('handleRight');
+
+    body.setAttribute('fill', color);
+    body.setAttribute('stroke', stroke);
+    handleL.setAttribute('stroke', stroke);
+    handleR.setAttribute('stroke', stroke);
+  }
+
+  function updatePreviewLabel() {
+    document.getElementById('previewLabel').textContent =
+      `${state.tipo} · Tamanho ${state.size} · ${colorName(state.color)}`;
+  }
+
+  function colorName(hex) {
+    const map = {
+      '#f5f5f5':'Natural','#1a4a2e':'Verde Escuro','#2d7a4f':'Verde Médio',
+      '#3a86c8':'Azul','#e84040':'Vermelho','#f0a500':'Amarelo','#222222':'Preto'
+    };
+    return map[hex] || hex;
+  }
+
+  // Color swatches
+  document.getElementById('colorSwatches').addEventListener('click', e => {
+    const sw = e.target.closest('.color-swatch');
+    if (!sw) return;
+    document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+    sw.classList.add('active');
+    state.color = sw.dataset.color;
+    updateBagColor(state.color);
+    updatePreviewLabel();
+  });
+
+  // Type selector
+  document.getElementById('typeSelector').addEventListener('click', e => {
+    const btn = e.target.closest('.size-btn');
+    if (!btn) return;
+    document.querySelectorAll('#typeSelector .size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const typeMap = {
+      'sacola-varejo':'Sacola Varejo','sacola-comercio':'Sacola Comércio',
+      'saco-geral':'Saco Geral','sacola-recuperada':'Sacola Eco'
+    };
+    state.tipo = typeMap[btn.dataset.type] || btn.dataset.type;
+    updatePreviewLabel();
+    document.getElementById('f_produto').value = state.tipo;
+  });
+
+  // Size selector
+  document.getElementById('sizeSelector').addEventListener('click', e => {
+    const btn = e.target.closest('.size-btn');
+    if (!btn) return;
+    document.querySelectorAll('#sizeSelector .size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.size = btn.dataset.size;
+    updatePreviewLabel();
+    const sizeMap = {'P':'Pequeno (P)','M':'Médio (M)','G':'Grande (G)','GG':'Extra Grande (GG)'};
+    document.getElementById('f_tamanho').value = sizeMap[state.size];
+  });
+
+  // Upload Logo
+  document.getElementById('logoInput').addEventListener('change', function() {
+    const file = this.files[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      showToast('⚠️ Arquivo muito grande. Máximo 5MB.'); return;
+    }
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      state.logoDataUrl = e.target.result;
+      applyLogoToBag(e.target.result);
+      document.getElementById('uploadZone').style.borderColor = '#3ea660';
+      showToast('✅ Logo aplicada ao preview da sacola!');
+    };
+    reader.readAsDataURL(file);
+  });
+
+  function applyLogoToBag(dataUrl) {
+    const logoArea = document.getElementById('logoArea');
+    const logoBagImg = document.getElementById('logoBagImg');
+
+    // Esconde placeholder
+    logoArea.style.display = 'none';
+
+    // Mostra imagem
+    logoBagImg.setAttribute('href', dataUrl);
+    logoBagImg.style.display = 'block';
+  }
+
+  // Drag & drop na upload zone
+  const uploadZone = document.getElementById('uploadZone');
+  uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.style.borderColor = '#3ea660'; });
+  uploadZone.addEventListener('dragleave', () => { uploadZone.style.borderColor = ''; });
+  uploadZone.addEventListener('drop', e => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) {
+      const dt = new DataTransfer();
+      dt.items.add(file);
+      document.getElementById('logoInput').files = dt.files;
+      document.getElementById('logoInput').dispatchEvent(new Event('change'));
+    }
+  });
+
+  // ── WHATSAPP ──
+  function enviarWhatsApp() {
+    const nome = document.getElementById('f_nome').value.trim();
+    const tel = document.getElementById('f_tel').value.trim();
+    const produto = document.getElementById('f_produto').value;
+
+    if (!nome || !tel) {
+      showToast('⚠️ Preencha nome e WhatsApp para continuar.'); return;
+    }
+
+    const cidade = document.getElementById('f_cidade').value;
+    const email = document.getElementById('f_email').value;
+    const tamanho = document.getElementById('f_tamanho').value;
+    const qtd = document.getElementById('f_qtd').value;
+    const logo = document.getElementById('f_logo').value;
+    const obs = document.getElementById('f_obs').value;
+
+    const logoTxt = logo === 'sim' ? 'Sim, quer personalizar com logomarca' : 'Não, sacola padrão';
+
+    const msg = `Olá, Implasverde! 👋
+
+*NOVO PEDIDO VIA SITE*
+
+*Nome/Empresa:* ${nome}
+*WhatsApp:* ${tel}
+*Cidade/Estado:* ${cidade || 'Não informado'}
+*Email:* ${email || 'Não informado'}
+
+*Produto:* ${produto || 'Não selecionado'}
+*Tamanho:* ${tamanho || 'Não informado'}
+*Quantidade estimada:* ${qtd || 'Não informado'}
+*Personalização com logo:* ${logoTxt}
+
+*Observações:* ${obs || 'Nenhuma'}
+
+Aguardo retorno. Obrigado!`;
+
+    const numero = '558499799094'; // ← Substitua pelo número real da equipe comercial
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  }
+
+  function scrollToPedido() {
+    document.getElementById('pedido').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // ── TOAST ──
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // INIT
+  renderProducts();
+  updatePreviewLabel();
+</script>
+</body>
+</html>
